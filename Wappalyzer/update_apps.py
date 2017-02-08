@@ -16,8 +16,7 @@ def update_apps():
     resp = requests.get(url)
     if resp.ok:
         with codecs.open('data/apps.json', 'w', encoding='UTF-8') as outfile:
-            jobject = json.loads(resp.content)
-            outfile.write(json.dumps(jobject, indent=2, 
+            outfile.write(json.dumps(resp.json(), indent=2,
                           separators=(',', ': ')))
         print("Finished updating data/apps.json")
     else:
